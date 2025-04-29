@@ -1,0 +1,7 @@
+frase = input('Digite uma frase: ').strip()
+maius = frase.upper()
+minus = frase.lower()
+letras = len(''.join(frase.split()))
+print(f'A frase maiuscula fica: {maius}')
+print(f'A frase minuscula fica: {minus} ')
+print(f'A frase tem {letras} letras')

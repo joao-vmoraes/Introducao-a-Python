@@ -1,0 +1,54 @@
+#fatiamento de strings
+
+frase = 'Curso em video'
+
+frase[0:6] vai printar do caracter 0 ate o caracter 5(CINCO)
+
+frase[0:6:2] vai printar do caracter 0 ate o 5 pulando de dois em dois ex: Cro
+
+frase[15:] do caracter 15 ate o final
+
+frase[9::3] começa no 9 vai ate o final indo de dois em dois
+
+
+
+#ANÁLISE DE STRING
+
+len(frase) = vai contar quantos caracteres a frase possui, começando no zero
+
+frase.count('o') = vai contar quantas vezes aparece a letra 'o' minuscula 
+
+frase.count('o', 0, 13) = vai contar quantos caracteres 'o' do 0 ate o 12(doze)
+
+frase.find('deo') = vai dizer em que momento começou a frase 'deo', ou seja na 11
+
+frase.find('android') = como nao existe ele vai retornar -1
+
+'curso' in frase =é como se perguntasse se existe a palavra selecionada,ou seja, ele vai retornar True
+
+
+#TRANSFORMAÇÃO
+
+frase.replace('phyton','android') = ele vai trocar a frase phyton por android
+
+frase.upper() = vai deixar tudo maiusculo
+
+frase.lower() = vai deixar tudo minusculo
+
+frase.capitalize() = vai tranformar o primeiro caractere em Maiusculo e deixar o resto minusculo
+
+frase.title() = vai deixar todo começo de palavra com a letra minuscula, e ele indentifica as palavras por causa dos espaços entre elas
+
+frase ='  aprenda phyton   '
+
+frase.strip() = tira todos os espaços inuteis no começo do texto e no final, ou seja, frase = 'aprenda phyton'
+
+frase.rstrip() = tira todos os espaços inuteis apenas no lado direito do texto,ou seja, frase = '   aprenda phyton'
+
+frase.lstrip() = tira todos os espaços inuteis no começo do texto,ou seja, frase = 'aprenda phyton    '
+
+#DIVISAO DE STRINGS
+
+frase.split() = recomeça a contagem dos caracteres apos uma nova palavra ser introduzida e os coloca em outra lista, ex: 'eu amo phyton' , a posição seria : 0 1 2 3 5 6 7 8 9 10 11 12, e agora vai ser: 0 1    0 1 2    0 1 2 3 4 5.
+
+','.join(frase) = vai separar cada palavra e vai colocar o que tiver entra parenteses entre elas, ex: curso,em,video,phyton

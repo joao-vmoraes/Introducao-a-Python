@@ -1,0 +1,97 @@
+============== TODAS AS MANIPULAÇÕES ==============
+i = indice [0] , [1] ...
+e = elemento 'GOIABA' , 2 , 'joao' ...
+
+
+.append(e) #adicionar
+.insert(i, e) #adicionar
+.pop(i) #remover
+.remove(e) #remover
+.sort() #modifica e ordena CRES.
+sorted(lista) #cria copia da lista e poe em ordem sem mudar a original
+.sort(reverse=True) #modifica e ordenar DECRES.
+
+
+===========================================
+criar uma copia de uma lista da maneira correta
+
+A = [1, 2, 3, 4, 5 ]
+B = A
+
+B[0] = 3 # SE FIZER ISSO O VALOR TAMBEM SERA MUDADO EM 'A'
+
+PARA CRIAR UMA COPIA DE FORMA CORRETA SERA:
+
+    B = A[:] # 'B' VAI RECEBER TODOS OS ELEMENTOS DE 'A', ASSIM SENDO UMA COPIA, E NAO FAZENDO UMA LIGAÇÃO DIRETA COM 'A'
+
+
+==============================================
+
+lista = ['pao' , 'sorvete' , 'doce de leite']
+
+
+
+----ADICIONAR ELEMENTO NO FINAL DA LISTA---
+
+espaço_amostral.append(elemento)
+
+ex:  lanche.append('leite')
+
+lista = ['pao' , 'sorvete' , 'doce de leite', 'leite']
+
+
+
+
+
+---ADICIONAR ELEMENTO EM X POSIÇÃO NA LISTA---
+espaço_amostral.insert(posição, elemento)
+
+ex:  lanche.insert(0 , 'leite')
+
+lista = ['leite', 'pao' , 'sorvete' , 'doce de leite']
+
+
+
+
+==== REMOVER ELEMENTOS DA LISTA ===
+
+    -> REMOVENDO PELO INDICE:
+        espaço_amostral.pop(indice do elemento)
+
+        ex: lanche.pop(0)
+
+        lista = ['sorvete' , 'doce de leite'] #o pao foi excluido pois seu indice era o [0]
+
+        obs: se dentro do metodo .pop() nao tiver nada, sempre sera excluido o ultimo da lista, ou seja, .pop() == .pop(-1)
+
+    -> REMOVENDO PELO ELEMENTO:
+        espaço_amostral.remove(elemento)
+
+        ex: lanche.remove('pao')
+
+        lista = ['sorvete' , 'doce de leite'] # o pao foi excluido
+
+
+
+
+==== CRIANDO LISTAS COM X ELEMENTOS COM O RANGE ====
+
+nova_lista = list(range(1,11))
+
+nova_lista = [ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 ]
+
+
+
+
+==== ORGANIZANDO A LISTA NUMERICCA ====
+valores = [ 2, 3, 7, 4, 6, 0, 1]
+
+    ->ORDEM CRESCENTE
+        valores.sort()
+
+        valores = [0, 1, 2, 3, 4, 6, 7]
+
+    ->ORDEM DECRESCENTE:
+        valores.sort(reverse = True)
+
+        valores = [7, 6, 4, 3, 2, 1, 0]

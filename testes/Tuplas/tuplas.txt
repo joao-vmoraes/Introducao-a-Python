@@ -1,0 +1,16 @@
+lanche = ('hamburguer' , 'batata frita')
+
+sorted(lanche) = ('batata frita' , 'hamburguer') (ordem alfabetica)
+
+----------------------
+a = (1, 2)
+b = (2, 3, 4)
+c = a + b
+
+c = (1, 2, 2, 3, 4)
+
+espaço_amostral.index(elemento) = mostra a 1 posição do elemento
+
+print(c.index(2)) = 1
+
+del(c) = () (deleta uma variavel inteira)

@@ -1,0 +1,56 @@
+FOR
+
+o for é usado para iterar(percorrer) uma lista de elementos
+#sintaxe básica:
+
+for item in sequência:
+    #bloco de código a ser repetido
+
+ex:
+
+frutas = ['maça' , 'laranja' , 'banana']
+
+for fruta in frutas:
+    print(fruta)
+
+terminal:
+
+maça
+laranja
+banana   
+
+exemplo 2: usando o range(x) para repetir x vezes
+e o valora maximo sera x - 1
+
+for i in range(5):   #repete de 0 a 4
+    print('numero :' , i)
+
+terminal:
+numero : 0
+numero : 1
+numero : 2
+numero : 3
+numero : 4
+
+2. WHILE
+é usado para repetir um bloco de código enquanto uma condição for verdadeira. ele é util quando voce nao sabe quamtas vezes o codigo precisa ser repétido
+
+sintaxe basica:
+
+while condição:
+    #bloco de codigo a ser repetido
+
+exemplo 1 contando de 1 ate 5:
+
+contador = 1
+
+while (contador <= 5):
+    print(contador)
+    contador += 1 #incrementa o contador em 1
+
+terminal:
+1
+2
+3
+4
+5

@@ -1,0 +1,74 @@
+o '+' so pode ser utilizado para mostrar 2 mensagens ou mais, se na informação tiver numeros o correto é usar a ','
+
+toda variavel é um objeto e recebe valores
+
+= no phyton significa 'recebe'
+ex: nome = 'joao'
+a variavel nome recebeu o valor 'joao'
+
+input tem o significado 'entrada', e pode ser utilizado no contexto como 'leia e guarde'  uma resposta do usuario
+ex: nome = input('qual o seu nome?')
+   a variavel nome vai receber e guardar o valor que o usuario responder
+----------------------------------------------------------
+TIPOS PRIMITIVOS
+
+INT 'inteiro' (numeros inteiros) = para demonstrar que o resultado do input é um numero inteiro.
+ex:  n1 = INT(input('digite sua idade'))
+a variavel n1 vai receber e guardar um valor numerico do usuario e esse valor sera entendido como um numero, caso nao usasse o INT, o computador entenderia como se fosse uma palavra
+
+FLOAT (números racionais) = (4,5    100,4     8,0)
+
+
+BOOL (True and False)
+
+
+str('ola' , 'mundo'), a soma de duas str se chama CONCATENAÇÃO
+-----------------------------
+{} --> substitui seu lugar por alguma variavel 
+ex: n1 = input('escolha um numero')
+    print('o seu numero escolhido foi {}'.format(n1))
+-----------------------------
+cores no terminal
+
+\033[style;text;back m  
+
+
+
+style = 0 (sem estilo), 1(em negrito) , 4(underline) , 7(inverter as cores)
+
+text = 30(branco) , 31(vermelho) , 32(verde) , 33(amarelo) , 34(anil), 35(roxo) , 36(azul) , 37(cinza) 
+
+back = 40(branco) , 41(vermelho) , 42(verde) , 43(amarelo) , 44(anil), 45(roxo) , 46(azul) , 47(cinza) 
+
+print('\033[1;31;43m ola mundo!')
+
+------------------------------
+ADICIONAR INPUT A LISTA:
+
+lista = []
+x = input('diga algo: ')
+lista += [x]
+
+------------------------------
+PEGAR MAIOR NUMERO DA LISTA
+lista = ['32' , '98' , '54']
+max(lista) ou min(lista)
+
+LISTAS
+Uma lista é uma estrutura de dados mutável e ordenada que permite armazenar uma coleção de elementos. Os elementos de uma lista podem ser de diferentes tipos de dados e são encerrados entre colchetes [], separados por vírgulas.
+
+ 
+CRIAÇÃO E ACESSO
+Para criar uma lista, simplesmente encerre os elementos entre colchetes:
+
+frutas = ["maçã", "banana", "laranja"]
+Para acessar os elementos de uma lista, utilize o índice do elemento entre colchetes. Os índices começam a partir de 0.
+
+print(frutas[0])  # Imprime "maçã"
+print(frutas[1])  # Imprime "banana"
+print(frutas[2])  # Imprime "laranja"
+Você também pode acessar os elementos a partir do final da lista utilizando índices negativos. O índice -1 representa o último elemento, -2 representa o penúltimo, e assim por diante.
+
+print(frutas[-1])  # Imprime "laranja"
+print(frutas[-2])  # Imprime "banana"
+print(frutas[-3])  # Imprime "maçã"
