@@ -58,7 +58,7 @@ while True:
     if contador == 1:
         balas_pc += 1
 
-    if balas_pc == 0: #se o computador esta sem munição pergunta
+    elif balas_pc == 0: #se o computador esta sem munição pergunta
         decisao_pc = random.choices([1, 2] , weights=[ 65 , 35 ])[0]
         
         if decisao_pc == 1: # computador defende
