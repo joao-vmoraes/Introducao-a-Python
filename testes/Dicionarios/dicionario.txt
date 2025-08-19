@@ -1,0 +1,38 @@
+**podem ter informações nao tao certas mais foi o que entendi com a aula teorica sem o uso de aulas praticas de acordo quando eu for entendendo os erros vou atualizando**
+
+##declaração de dicxionarios##
+Dicionario = {}
+Dicionario = dict()
+
+==interpretação dop dicionario ==
+dados = {'nome':'Pedro' , 'idade' : 25}
+
+print(dados['nome']) == 'Pedro'
+print(dados['idade']) == 25
+
+
+-- adicionando --
+dados['sexo'] = 'Masculino'
+
+-- retirando --
+del dados['sexo']
+
+
+== exemplos ==
+
+filme = {
+    "titulo":"Star Wars"
+    "ano":1977
+}
+
+print(filme.values()) = "starwars" "1977" 
+print(filme.keys()) = "nome" "ano"
+print(filme.items()) = ("nome" "starwars") , ( "ano" "1977" )
+
+for k,v in filme.items():
+    print(f'{k} = {v}') == ' nome = starwars '
+
+
+
+nas listas quando queriamos copiar uma lista para outra sem criar uma relação entre elas usamos o [:] famoso slice, mas quando falamios de dicionario temos que usar o metodo .copy() para nao ocorrer erros!!
+
