@@ -14,7 +14,7 @@ while True:
         grupo.append(pessoa.copy())
 
         if pessoa["sexo"] == "F":
-            mulheres.append(pessoa.copy())
+            mulheres.append(pessoa["nome"])
 
         continuar = input("Deseja adicionar mais alguem? [S/N] >>> ").upper().strip()[0]
     
@@ -28,7 +28,7 @@ media = soma_idades / len(grupo)
 
 for pessoa in grupo:
     if pessoa["idade"] >= media:
-        idades_maiores_que_media.append(pessoa)
+        idades_maiores_que_media.append(pessoa["nome"])
 
 
 print("=-" * 10)
