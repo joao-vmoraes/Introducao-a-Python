@@ -36,3 +36,7 @@ for k,v in filme.items():
 
 nas listas quando queriamos copiar uma lista para outra sem criar uma relação entre elas usamos o [:] famoso slice, mas quando falamios de dicionario temos que usar o metodo .copy() para nao ocorrer erros!!
 
+
+from operator import itemgetter()
+
+ranking = sorted(jogadores.items(), key=itemgetter(1), reverse = True) #operator.itemgatter(1) vai receber o segundo valor dos itens que no caso é o valor(resultado do dado). E o sorted vai ordenar de forma crescente usando o valor(valor do dado) como parametro de ordem crescente.
