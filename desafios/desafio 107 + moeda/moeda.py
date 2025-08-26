@@ -15,7 +15,7 @@ def titulo(msg):
     print(f"  {msg}")
     print("=-" * 15)
 
-def resumo(v , a , d):
+def resumo(v , a=50 , d=50):
     titulo(f"{"Resumo Valor":^26}")
     print(f"O dobro de R${v} é R${dobrar(v):.2f}")
     print(f"A metade de R${v} é R${metade(v):.2f}")
