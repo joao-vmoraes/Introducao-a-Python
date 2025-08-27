@@ -18,9 +18,13 @@ while True:
         continue#adicionar treino
 
     elif opcao == 3:
+        teino_selecionado = md.excluir_treino()
+        
         continue#excluir treino
 
     elif opcao == 4:
+        print("")
+        
         break#sair do sistema
 
 

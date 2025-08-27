@@ -5,6 +5,10 @@ import datetime
 def linha(tam=40):
     print("\033[35m=\033[m" * tam)
 
+def sair_programa():
+    cabecalho("Até mais!")
+    sleep(2)
+
 def cabecalho(frase):
     #usado para criar cabeçalhos com alguma frase, com 40 caracteres de alinhamento
     linha()
@@ -42,6 +46,7 @@ def listar_treinos(list):
         while True:
             try:
                 resposta = int(input("Digite a opção >>> "))
+                sleep(1)
                 return resposta
             except:
                 print("ERRO: Tipo de dado enviado não válido.")
@@ -58,6 +63,7 @@ def escolher_treino():
     while True:
         try:
             resposta = int(input("Digite a opção >>> "))
+            sleep(1)
             return resposta
         except:
             print("ERRO: Tipo de dado enviado não válido.")
@@ -68,6 +74,7 @@ def adicionar_treino(lista):
     caminho = 'mini_sistema/treinos/treinos.txt'
     nome = input('Digite o nome do treino (Deixe vazio e Aperte ENTER para cancelar) : ')
     if nome == "":
+        sleep(1)
         return
 
     #verificando se existe algum treino ja cadastrado, se nao houver ele cria, se tiver ele adiciona
@@ -78,4 +85,26 @@ def adicionar_treino(lista):
     else:
         with open(caminho , "w" , encoding='utf-8') as arquivo:
             arquivo.write(f"{nome}\n")
+
+
+def excluir_treino(): 
+    novo_treino = []
+    caminho = 'mini_sistema/treinos/treinos.txt'
+    escolha = input("Digite o nome EXATO do treino que voce deseja excluir >>> ")
+    
+    with open(caminho , "r" , encoding='utf-8') as arq:
+        for lin in arq:
+            if escolha != lin.strip():
+                novo_treino.append(lin)
+        
+    with open(caminho , "w" , encoding='utf-8') as arq:
+        arq.writelines(novo_treino)
+        sleep(2)
+
+    linha()
+    print("Treino atualizado.")
+
+
+def treino_escolhido():
+    
 
