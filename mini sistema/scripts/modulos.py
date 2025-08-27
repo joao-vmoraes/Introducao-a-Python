@@ -31,7 +31,7 @@ def listar_treinos(list):
 
     c = 1
     for i in list:
-        print(f"{c} - {i}") #funcao para nao sair na impressao o tipo do arquivo
+        print(f"{c} - {i}") 
         c += 1
 
 def escolher_treino():
