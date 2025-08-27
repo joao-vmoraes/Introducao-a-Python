@@ -11,10 +11,10 @@ while True:
 
     if opcao == 1:
         md.listar_treinos(treinos)
-        resposta = md.escolher_treino()
         continue#abrir treino
 
     elif opcao == 2:
+        md.adicionar_treino(treinos)
         continue#adicionar treino
 
     elif opcao == 3:
