@@ -103,8 +103,3 @@ def excluir_treino():
 
     linha()
     print("Treino atualizado.")
-
-
-def treino_escolhido():
-    
-
