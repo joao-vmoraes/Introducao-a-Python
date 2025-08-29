@@ -3,9 +3,9 @@ import os
 import datetime
 import json
 
-opcoes_treino = ["Cadastrar Treino" , "Excluir Treino" , "Analisar Treino"]
+opcoes_treino = ["Cadastrar Treino" , "Excluir Treino" , "Analisar Treino" , "Sair"]
 
-treino = { #formato em que os treinos serão guardados .jason
+treino = { #formato em que os treinos serão guardados .json
     "nome":"Peito" ,
     "data" : "dia/mes/ano" ,
     "Exercicios" : [
@@ -17,6 +17,15 @@ treino = { #formato em que os treinos serão guardados .jason
         }
     ]
 }
+
+def digitar_inteiro(pergunta):
+    while True: 
+        try:
+            resposta = int(input(pergunta))
+            if resposta > 0:
+                return resposta
+        except:
+            print("Digite uma opcao valida >>>")
 
 def linha(tam=40): #para a simples criação d e uma linha
     print("\033[35m=\033[m" * tam)
@@ -90,6 +99,8 @@ def selecionar_treino(numero_do_treino_selecionado): #usado para mostrar as opco
                 c += 1
             linha()
             resposta = int(input("Digite a sua opção >>> "))
+            while resposta < 1 and resposta > len(opcoes_treino):
+                resposta = int(input("Digite uma opção valida >>> "))
             return resposta
         
         except ( IndexError , ValueError):
@@ -134,3 +145,44 @@ def excluir_treino():
     linha()
     cabecalho("Treino atualizado.")
     sleep(2)
+
+
+def Cadastrar_treino_do_dia(treino_selecionado):
+    treino["nome"] = treino_selecionado
+    data = datetime.date.today()
+    treino["data"] = data.strftime("%Y_%#m_%#d")
+    contador = 1
+    treino["Exercicios"] = []
+
+    while True:
+        linha()
+        if contador < 1:
+            contador = 1 #feito para na primeira iteracao mesmo se o usuario voltar o contador volta para o primeiro exercicio
+
+        exercicio = {}
+        exercicio["nome"] = input(f"(Escreva 'Fim' ou para finalizar o treino ou 'cancelar' para cancelar o cadastro do treino) \nDigite o nome do {contador}° exercicio \n >>> ").capitalize().strip()
+
+        if exercicio["nome"] == "Fim":
+            if treino["Exercicios"]:
+                print(treino)
+                return treino
+            break
+
+        elif exercicio["nome"] == "Cancelar":
+            return
+        
+        elif exercicio["nome"] == "":
+            print("Ops voce provavelmente esqueceu de digitar, tente novamente.")
+            sleep(2)
+            continue
+
+        exercicio["series"] = digitar_inteiro("Qual foi a quantidade de series feitas >>> ")
+        exercicio["rep"] = []
+
+        for i in range(exercicio["series"]) :
+            rep = digitar_inteiro(f"Digite a quantidade de repetições feitas na {i + 1}° serie >>>")
+            exercicio["rep"].append(rep)
+
+        treino["Exercicios"].append(exercicio)
+        contador += 1
+
