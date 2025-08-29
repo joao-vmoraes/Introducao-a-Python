@@ -26,7 +26,7 @@ import datetime
 #tempo = agora.timestamp()
 #print(tempo) mostra a quantidade de segundos passados desde algum tempo predefinido pela propria library
 #agora = datetime.datetime(2025, 08 , 27)
-# mensagem = agora.srtftime("Hoje é dia %d do mes %m do ano %Y")
+# mensagem = agora.strftime("Hoje é dia %d do mes %m do ano %Y")
 
 # data_string = "27/08/2025"
 # data = datetime.datetime.strptime(data_string , "%d/%m/%Y")
