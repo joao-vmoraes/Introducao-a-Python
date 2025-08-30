@@ -17,7 +17,8 @@ while True:
         resposta = md.selecionar_treino(treino_selecionado)
 
         if resposta == 1:
-            md.Cadastrar_treino_do_dia(treinos[treino_selecionado - 1].strip())
+            dicionario_treino = md.Cadastrar_treino_do_dia(treinos[treino_selecionado - 1].strip())
+            md.criar_arquivo_treino(dicionario_treino)
             continue #Cadastrar dia de treino
 
         elif resposta == 2:

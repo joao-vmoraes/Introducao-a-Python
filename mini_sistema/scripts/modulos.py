@@ -176,6 +176,7 @@ def Cadastrar_treino_do_dia(treino_selecionado):
             sleep(2)
             continue
 
+        exercicio["peso"] = digitar_inteiro("Qual foi a carga utilizada (Kg)  >>> ")
         exercicio["series"] = digitar_inteiro("Qual foi a quantidade de series feitas >>> ")
         exercicio["rep"] = []
 
@@ -186,3 +187,7 @@ def Cadastrar_treino_do_dia(treino_selecionado):
         treino["Exercicios"].append(exercicio)
         contador += 1
 
+def criar_arquivo_treino(dicionario):
+    caminho = f'mini_sistema/treinos/{dicionario['nome']}_{dicionario['data']}.json'
+    with open(caminho , "w" , encoding='utf-8') as arq:
+        arq.write(dicionario)
