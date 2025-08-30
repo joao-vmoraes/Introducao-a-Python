@@ -3,11 +3,11 @@ import os
 import datetime
 import json
 
-opcoes_treino = ["Cadastrar Treino" , "Excluir Treino" , "Analisar Treino" , "Sair"]
+opcoes_treino = ["Cadastrar Treino" , "Excluir Treino" , "Analisar Treino" , "Sair"] # opções quando o usuario abrir alguma categoria de treino, ex: peito, costas,etc
 
 treino = { #formato em que os treinos serão guardados .json
     "nome":"Peito" ,
-    "data" : "dia/mes/ano" ,
+    "data" : "ano/mes/dia" ,
     "Exercicios" : [
         {
             "nome" : "supino" ,
@@ -18,7 +18,7 @@ treino = { #formato em que os treinos serão guardados .json
     ]
 }
 
-def digitar_inteiro(pergunta):
+def digitar_inteiro(pergunta): # feita pro usuario nao conseguir digitar algo sem ser um numero inteiro
     while True: 
         try:
             resposta = int(input(pergunta))
@@ -27,7 +27,7 @@ def digitar_inteiro(pergunta):
         except:
             print("\033[31mERRO: Digite uma opcao valida \033[m")
 
-def digitar_float(pergunta):
+def digitar_float(pergunta):# feita pro usuario nao conseguir digitar algo sem ser um numero real
     while True: 
         try:
             resposta = float(input(pergunta))
@@ -48,7 +48,7 @@ def cabecalho(frase):   #usado para criar cabeçalhos com alguma frase, com 40 c
     print(f"\033[34m{frase:^40}\033[m")
     linha()
 
-def menu_principal(opcoes_menu): # usado para mostrar as opções no menu e receber a resposta do usuario
+def menu_principal(opcoes_menu): # usado para mostrar as opções no menu principal e receber a resposta do usuario
     c = 1
     cabecalho("Menu de Gerenciamento de Treinos")
     for i in opcoes_menu:
@@ -63,7 +63,7 @@ def menu_principal(opcoes_menu): # usado para mostrar as opções no menu e rece
             print("\033[31mERRO: Tipo de dado enviado não válido.\033[m")
             sleep(2)
 
-def listar_treinos(): #listar os treinos que o usuario ja cadastrou
+def listar_treinos(): #listar as categorias de treinos que o usuario ja cadastrou
     cabecalho("Lista de Treinos")
     caminho = 'mini_sistema/treinos/treinos.txt'
     c = 1
@@ -91,7 +91,7 @@ def listar_treinos(): #listar os treinos que o usuario ja cadastrou
         sleep(2)
 
 
-def selecionar_treino(numero_do_treino_selecionado): #usado para mostrar as opcoes do que fazer quando o usuario selecionar algum treino
+def selecionar_treino(numero_do_treino_selecionado): #usado para mostrar as opcoes do que fazer quando o usuario selecionar alguma categoria de treino
     caminho = 'mini_sistema/treinos/treinos.txt'
     c = 1
 
@@ -117,14 +117,14 @@ def selecionar_treino(numero_do_treino_selecionado): #usado para mostrar as opco
             sleep(2)
 
 
-def criar_treino(): #usado para o usuario cadastrar um treino
+def criar_treino(): #usado para o usuario cadastrar um dia de treino
     caminho = 'mini_sistema/treinos/treinos.txt'
     nome = input('Digite o nome do treino (Deixe vazio e Aperte ENTER para cancelar) : ')
     if nome == "":
         sleep(1)
         return
 
-    #verificando se existe algum treino ja cadastrado, se nao houver ele cria, se tiver ele adiciona
+    #verificando se existe alguma categoria de treino ja cadastrada, se nao houver ele cria, se tiver ele adiciona
     if os.path.isfile(caminho):
         with open(caminho , "a" , encoding='utf-8') as arquivo:
             arquivo.write(f"{nome}\n")
@@ -137,7 +137,7 @@ def criar_treino(): #usado para o usuario cadastrar um treino
     sleep(2)
 
 
-def excluir_treino(): 
+def excluir_treino(): #usado para excluir alguma categoria de treino. ex:costas, peito,etc
     novo_treino = []
     caminho = 'mini_sistema/treinos/treinos.txt'
     escolha = input("Digite o nome EXATO do treino que voce deseja excluir >>> ")
@@ -156,7 +156,7 @@ def excluir_treino():
     sleep(2)
 
 
-def Cadastrar_treino_do_dia(treino_selecionado):
+def Cadastrar_treino_do_dia(treino_selecionado): #utilizado para cadastrar um dia de treino. exercicios,carga,etc
     treino["nome"] = treino_selecionado
     data = datetime.date.today()
     treino["data"] = data.strftime("%Y_%#m_%#d")
@@ -165,9 +165,6 @@ def Cadastrar_treino_do_dia(treino_selecionado):
 
     while True:
         linha()
-        if contador < 1:
-            contador = 1 #feito para na primeira iteracao mesmo se o usuario voltar o contador volta para o primeiro exercicio
-
         exercicio = {}
         exercicio["nome"] = input(f"(Escreva 'Fim' ou para finalizar o treino ou 'cancelar' para cancelar o cadastro do treino) \nDigite o nome do {contador}° exercicio \n >>> ").capitalize().strip()
 
@@ -198,7 +195,7 @@ def Cadastrar_treino_do_dia(treino_selecionado):
         treino["Exercicios"].append(exercicio)
         contador += 1
 
-def criar_arquivo_treino(dicionario):
+def criar_arquivo_treino(dicionario): # utilizado library 'json' para criar um arquivo .json com o treino informado pelo usuario
     caminho = f'mini_sistema/treinos/{dicionario['nome']}_{dicionario['data']}.json'
     with open(caminho , "w" , encoding='utf-8') as arq:
         json.dump(dicionario , arq, ensure_ascii=False , indent=4)

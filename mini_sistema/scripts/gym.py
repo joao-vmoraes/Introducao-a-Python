@@ -12,34 +12,34 @@ opcoes_menu_principal = ["Abrir Treinos" , "Adicionar Treino" , "Excluir Treino"
 while True:
     opcao = md.menu_principal(opcoes_menu_principal)
 
-    if opcao == 1: 
+    if opcao == 1: #Cadastrar dia de treino
+            
         treino_selecionado = md.listar_treinos()
         resposta = md.selecionar_treino(treino_selecionado)
 
         if resposta == 1:
             dicionario_treino = md.Cadastrar_treino_do_dia(treinos[treino_selecionado - 1].strip())
             md.criar_arquivo_treino(dicionario_treino)
-            continue #Cadastrar dia de treino
 
         elif resposta == 2:
-            continue # Excluir Treino
+            continue # Excluir dia de Treino
 
         elif resposta == 3:
-            continue # Analisar Treino 
+            continue # Analisar Treinos
 
         elif resposta == 4:
             md.cabecalho("Saindo ...")
             sleep(1)
             break
-        continue#abrir treino
+        
 
     elif opcao == 2:
         md.criar_treino()
-        continue#adicionar treino
+        continue#adicionar categoria de treino
 
     elif opcao == 3:
         teino_selecionado = md.excluir_treino()
-        continue#excluir treino
+        continue#excluir categoria de treino
 
     elif opcao == 4:
         md.sair_programa()
