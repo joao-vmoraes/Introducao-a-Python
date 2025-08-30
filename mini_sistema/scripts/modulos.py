@@ -25,7 +25,16 @@ def digitar_inteiro(pergunta):
             if resposta > 0:
                 return resposta
         except:
-            print("Digite uma opcao valida >>>")
+            print("\033[31mERRO: Digite uma opcao valida \033[m")
+
+def digitar_float(pergunta):
+    while True: 
+        try:
+            resposta = float(input(pergunta))
+            if resposta > 0:
+                return resposta
+        except:
+            print("\033[31mERRO: Digite uma opcao valida \033[m")
 
 def linha(tam=40): #para a simples criação d e uma linha
     print("\033[35m=\033[m" * tam)
@@ -51,7 +60,7 @@ def menu_principal(opcoes_menu): # usado para mostrar as opções no menu e rece
             resposta = int(input("Digite a opção >>> "))
             return resposta
         except:
-            print("ERRO: Tipo de dado enviado não válido.")
+            print("\033[31mERRO: Tipo de dado enviado não válido.\033[m")
             sleep(2)
 
 def listar_treinos(): #listar os treinos que o usuario ja cadastrou
@@ -73,7 +82,7 @@ def listar_treinos(): #listar os treinos que o usuario ja cadastrou
                 resposta = int(input("Digite a opção >>> "))
                 return resposta
             except:
-                print("ERRO: Tipo de dado enviado não válido.")
+                print("\033[31mERRO: Tipo de dado enviado não válido.\033[m")
                 sleep(2)
                 break
 
@@ -104,7 +113,7 @@ def selecionar_treino(numero_do_treino_selecionado): #usado para mostrar as opco
             return resposta
         
         except ( IndexError , ValueError):
-            print("ERRO: o numero selecionado não é compativel com nenhum treino.")
+            print("\033[31mERRO: o numero selecionado não é compativel com nenhum treino.\033[m")
             sleep(2)
 
 
@@ -164,11 +173,13 @@ def Cadastrar_treino_do_dia(treino_selecionado):
 
         if exercicio["nome"] == "Fim":
             if treino["Exercicios"]:
-                print(treino)
+                cabecalho("Treino cadastrado com sucesso!")
+                sleep(2)
                 return treino
             break
 
         elif exercicio["nome"] == "Cancelar":
+            print("")
             return
         
         elif exercicio["nome"] == "":
@@ -176,7 +187,7 @@ def Cadastrar_treino_do_dia(treino_selecionado):
             sleep(2)
             continue
 
-        exercicio["peso"] = digitar_inteiro("Qual foi a carga utilizada (Kg)  >>> ")
+        exercicio["peso"] = digitar_float("Qual foi a carga utilizada (Kg)  >>> ")
         exercicio["series"] = digitar_inteiro("Qual foi a quantidade de series feitas >>> ")
         exercicio["rep"] = []
 
@@ -190,4 +201,4 @@ def Cadastrar_treino_do_dia(treino_selecionado):
 def criar_arquivo_treino(dicionario):
     caminho = f'mini_sistema/treinos/{dicionario['nome']}_{dicionario['data']}.json'
     with open(caminho , "w" , encoding='utf-8') as arq:
-        arq.write(dicionario)
+        json.dump(dicionario , arq, ensure_ascii=False , indent=4)

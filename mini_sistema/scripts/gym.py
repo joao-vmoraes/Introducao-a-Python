@@ -5,14 +5,14 @@ from time import sleep
 with open('mini_sistema/treinos/treinos.txt' , "r" , encoding='utf-8') as arq:
     treinos = arq.readlines()
 
-opcoes_menu_principal = ["Abrir Treino" , "Adicionar Treino" , "Excluir Treino" , "Sair do Sistema"]
+opcoes_menu_principal = ["Abrir Treinos" , "Adicionar Treino" , "Excluir Treino" , "Sair do Sistema"]
 
 
 
 while True:
     opcao = md.menu_principal(opcoes_menu_principal)
 
-    if opcao == 1:
+    if opcao == 1: 
         treino_selecionado = md.listar_treinos()
         resposta = md.selecionar_treino(treino_selecionado)
 
@@ -45,4 +45,6 @@ while True:
         md.sair_programa()
         break#sair do sistema
 
-
+    else:
+        print("\033[31m Digite uma opção valida.\033[m")
+        sleep(2)
