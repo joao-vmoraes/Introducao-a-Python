@@ -1,0 +1,20 @@
+import json
+
+meu_dicionario_string = " {"nome": "Ana", "idade": 25, "cidade": "Porto"} "
+
+meu_dicionario_json = json.loads(meu_dicionario_string)
+	- transforma a string em um dicionario	
+
+print(meu_dicionario_json["nome"]) = Ana
+
+dicionario_string = json.dumps(meu_dicionario_json)
+	- transforma o dicionario em uma string novamente
+
+
+with open(caminho , "w" , encoding="utf-8") as arq:
+	json.dump(dicionario, arq , indent = 4 ,  ensure_ascii=False)
+
+
+with open(caminho , "r" , encoding="utf-8") as arq:
+	dados = json.load(arq)
+	print(dados) # out: o dicionario
