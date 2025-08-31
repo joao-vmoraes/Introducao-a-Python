@@ -3,7 +3,7 @@ import os
 from time import sleep
 
 opcoes_menu_principal = ["Abrir Treinos" , "Adicionar Treino" , "Excluir Treino" , "Sair do Sistema"]
-
+md.existencia_arq()
 
 while True:
     with open('mini_sistema/treinos/treinos.txt' , "r" , encoding='utf-8') as arq:
@@ -14,11 +14,13 @@ while True:
     if opcao == 1: #Cadastrar dia de treino
             
         treino_selecionado = md.listar_treinos()
+        if treino_selecionado == -1: # caso nao tenha nenhum treino registrado ainda
+            continue
         resposta = md.selecionar_treino(treino_selecionado)
 
         if resposta == 1:
             dicionario_treino = md.Cadastrar_treino_do_dia(treinos[treino_selecionado - 1].strip())
-            if dicionario_treino != -1: # quando o usuario  não cancelar a criação de um treino
+            if dicionario_treino != -1: # quando o usuario não cancelar a criação de um treino
                 md.criar_arquivo_treino(dicionario_treino) 
 
         elif resposta == 2:
@@ -30,7 +32,7 @@ while True:
         elif resposta == 4:
             md.cabecalho("Saindo ...")
             sleep(1)
-            break
+            continue
         
 
     elif opcao == 2:

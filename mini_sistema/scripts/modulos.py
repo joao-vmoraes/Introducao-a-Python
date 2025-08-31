@@ -5,6 +5,14 @@ import json
 
 opcoes_treino = ["Cadastrar Treino" , "Excluir Treino" , "Analisar Treino" , "Sair"] # opções quando o usuario abrir alguma categoria de treino, ex: peito, costas,etc
 
+def existencia_arq():
+    caminho = 'mini_sistema/treinos/treinos.txt'
+    
+    #verificando se existe alguma categoria de treino ja cadastrada, se nao houver ele cria, se tiver ele adiciona
+    if not os.path.isfile(caminho):
+        with open(caminho , "w" , encoding='utf-8') as arquivo:
+            arquivo.write(f"")
+
 treino = { #formato em que os treinos serão guardados .json
     "nome":"Peito" ,
     "data" : "ano/mes/dia" ,
@@ -67,6 +75,10 @@ def listar_treinos(): #listar as categorias de treinos que o usuario ja cadastro
     cabecalho("Lista de Treinos")
     caminho = 'mini_sistema/treinos/treinos.txt'
     c = 1
+    if os.path.getsize(caminho) == 0:
+        print("Voce ainda nao cadastrou nenhum treino.")
+        sleep(2)
+        return -1
 
     try:
         with open(caminho , "r" , encoding='utf-8') as arquivo:
@@ -84,6 +96,7 @@ def listar_treinos(): #listar as categorias de treinos que o usuario ja cadastro
             except:
                 print("\033[31mERRO: Tipo de dado enviado não válido.\033[m")
                 sleep(2)
+                return -1
                 break
 
     except:
@@ -140,8 +153,17 @@ def criar_treino(): #usado para o usuario cadastrar um dia de treino
 def excluir_treino(): #usado para excluir alguma categoria de treino. ex:costas, peito,etc
     novo_treino = []
     caminho = 'mini_sistema/treinos/treinos.txt'
-    escolha = input("Digite o nome EXATO do treino que voce deseja excluir >>> ")
+    c = 1
+
+    linha()
+    with open(caminho , "r" , encoding='utf-8') as arq:
+        treinos = arq.readlines
+        for treino in treinos:
+            print(f"\033[31m{c}\033[m - {treino.strip()}") #usando o metodo strip para nao imrimir uma linha vazia por causa do \n
+            c += 1
+    linha()
     
+    escolha = input("Digite o nome EXATO do treino que voce deseja excluir >>> ")
     with open(caminho , "r" , encoding='utf-8') as arq:
         for lin in arq:
             if escolha != lin.strip():
@@ -168,7 +190,11 @@ def Cadastrar_treino_do_dia(treino_selecionado): #utilizado para cadastrar um di
         exercicio = {}
         exercicio["nome"] = input(f"(Escreva 'Fim' ou para finalizar o treino ou 'cancelar' para cancelar o cadastro do treino) \nDigite o nome do {contador}° exercicio \n >>> ").capitalize().strip()
 
-        if exercicio["nome"] == "Fim":
+        if exercicio["nome"] == "Fim" and treino["Exercicios"] == []: # usado quando na primeira iteração o usuario digita "fim" no nome
+            return -1
+        
+
+        elif exercicio["nome"] == "Fim":
             if treino["Exercicios"]:
                 cabecalho("Treino cadastrado com sucesso!")
                 sleep(2)
