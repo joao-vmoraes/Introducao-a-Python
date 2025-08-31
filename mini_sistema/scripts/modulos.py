@@ -176,8 +176,9 @@ def Cadastrar_treino_do_dia(treino_selecionado): #utilizado para cadastrar um di
             break
 
         elif exercicio["nome"] == "Cancelar":
-            print("")
-            return
+            cabecalho("treino cancelado com sucesso.")
+            sleep(2)
+            return -1
         
         elif exercicio["nome"] == "":
             print("Ops voce provavelmente esqueceu de digitar, tente novamente.")
