@@ -2,8 +2,8 @@ import modulos as md
 import os
 from time import sleep
 
-opcoes_menu_principal = ["Abrir Treinos" , "Adicionar Treino" , "Excluir Treino" , "Sair do Sistema"]
-md.existencia_arq()
+opcoes_menu_principal = ["Abrir Treinos" , "Adicionar Treino" , "Excluir Treino" , "Sair do Sistema"] # opções que apareceram no menu principal
+md.existencia_arq() #verificando se existe o arquivo treino.txt, se nao houver ele cria
 
 while True:
     with open('mini_sistema/treinos/treinos.txt' , "r" , encoding='utf-8') as arq:
