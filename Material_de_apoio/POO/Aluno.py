@@ -4,6 +4,7 @@ class Aluno: # declaração da classe
         self.nome = f"{nome}" # atributo de instancia
         self.idade = idade # atributo de instancia
 
+
     # Métodos
 
     def aniversario(self):
@@ -18,8 +19,8 @@ class Aluno: # declaração da classe
 a1 = Aluno("Luiz", 20)
 a2 = Aluno("Pedro", 10)
 
-a1.aniversario()
-a2.aniversario()
-
 a1.boasVindas()
 a2.boasVindas()
+
+a1.aniversario()
+a2.aniversario()
