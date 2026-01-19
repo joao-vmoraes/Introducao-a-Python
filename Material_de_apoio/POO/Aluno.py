@@ -1,4 +1,5 @@
 class Aluno: # declaração da classe
+    escola = 'Escola Menino Jesus' # Como se fosse um atributo estático em Java. Todos da classe compartilharam 
 
     def __init__(self, nome, idade): #metodo construtor
         self.nome = f"{nome}" # atributo de instancia
@@ -12,7 +13,7 @@ class Aluno: # declaração da classe
         print(f"Agora voce tem {self.idade} anos!")
 
     def boasVindas(self):
-        print(f"Ola {self.nome} ! Seja bem vindo!!!")
+        print(f"Ola {self.nome} ! Seja bem vindo a {self.escola}!!!")
 
 # Main
 
