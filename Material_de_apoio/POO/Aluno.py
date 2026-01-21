@@ -27,4 +27,4 @@ a1.aniversario()
 a2.aniversario()
 
 print(vars(a1))
-print(vars(a2))
+print(a2.__dict__) #Mesma coisa que o vars(obj)
