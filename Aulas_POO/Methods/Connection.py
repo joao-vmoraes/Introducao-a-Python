@@ -9,8 +9,13 @@ class Connection:
 
     def set_password(self, password):
         self.password = password
+        
+    @classmethod # metodo de classe, que nao tera self, e sim uma classe
+    def create_with_auth(cls, password, user):
+        connection = cls()
+        connection.password = password
+        connection.user = user
+        return connection
 
 c1 = Connection()
-print(c1.user)
-c1.set_user('adm')
 print(c1.user)
