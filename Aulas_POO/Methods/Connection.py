@@ -16,6 +16,12 @@ class Connection:
         connection.password = password
         connection.user = user
         return connection
+    
+    @staticmethod
+    def soma(x,y):
+        return x + y
 
 c1 = Connection()
 print(c1.user)
+c2 = Connection.create_with_auth(123, 'adm')
+print(vars(c2))
