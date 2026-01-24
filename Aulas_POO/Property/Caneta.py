@@ -1,12 +1,12 @@
 class Caneta:
     def __init__(self, cor):
-        self.cor = cor
+        self.cor = cor # Chama o setter
 
     @property # Funciona como se fosse um getter para um atributo da classe.
     def cor(self):
-        return self._cor
+        return f'Estou no getter {self._cor}'
 
-    @cor.setter
+    @cor.setter # Setter
     def cor(self, cor):
         print("ESTOU NO SETTER", cor)
         self._cor = cor
