@@ -25,3 +25,6 @@ a2.boasVindas()
 
 a1.aniversario()
 a2.aniversario()
+
+print(vars(a1))
+print(a2.__dict__) #Mesma coisa que o vars(obj)
