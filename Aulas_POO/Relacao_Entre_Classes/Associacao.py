@@ -1,3 +1,5 @@
+# O Atirador USA uma Arma de Combate
+
 class Atirador:
     def __init__(self, nome, arma = None):
         self.nome = nome
