@@ -8,7 +8,8 @@ class Pessoa:
 
 
 class Professor(Pessoa): # Professor esta herdando de Pessoa
-    ...
+    def __init__(self, nome, idade):
+        super().__init__(nome, idade)
 
 p1 = Professor("joao", 12)
 p1.falar_nome_classe()
