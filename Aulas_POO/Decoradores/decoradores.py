@@ -1,8 +1,9 @@
+def criar_repr(self):
+    class_name = type(self).__name__
+    class_dict = self.__dict__
+    return f'{class_name}({class_dict})'
+
 def adiciona_repr(cls):
-    def criar_repr(self):
-        class_name = type(self).__name__
-        class_dict = self.__dict__
-        return f'{class_name}({class_dict})'
     cls.__repr__ = criar_repr
     return cls
 
