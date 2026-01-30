@@ -60,3 +60,5 @@ print(p3)
 
 
 print(p1 > p3)
+print(p3 >= p1)
+print(p3 == p3)
