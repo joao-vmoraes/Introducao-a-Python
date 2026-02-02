@@ -1,3 +1,3 @@
-import varias_linhas, uma_linha, funcoes
+import varias_linhas, uma_linha, funcoes, classe
 
-help(funcoes)
+help(classe)
