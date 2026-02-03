@@ -1,31 +1,33 @@
 from abc import ABC, abstractmethod
 
+class FalhaNaAutenticacaoError(Exception): ...
+
 class Conta(ABC):
-    def __init__(self, agencia, numero, saldo):
-        self._agencia = agencia
-        self._numero = numero
-        self._saldo = saldo
+    def __init__(self, agencia: str, numero:int, saldo: float = 0):
+        self._agencia:str = agencia
+        self._numero:int = numero
+        self._saldo:float = saldo
     
     def __repr__(self):
         return f'AGENCIA: {self.agencia} , NUMERO: {self.numero} , SALDO: {self.saldo}'
 
-    @property
-    def agencia(self): return self._agencia
+    @property 
+    def agencia(self)->str: return self._agencia
 
     @property
-    def numero(self): return self._numero
+    def numero(self)-> int: return self._numero
 
     @property
-    def saldo(self): return self._saldo
+    def saldo(self) -> float: return self._saldo
 
     @agencia.setter
-    def agencia(self, valor):self._agencia = valor
+    def agencia(self, valor: str)->None:self._agencia = valor
 
     @numero.setter
-    def numero(self, valor): self._numero = valor
+    def numero(self, valor:int)->None: self._numero = valor
 
     @saldo.setter
-    def saldo(self, valor): self._saldo = valor
+    def saldo(self, valor:float)->None: self._saldo = valor
 
     @abstractmethod
     def sacar(self, valor: float) -> bool:
@@ -133,13 +135,16 @@ class Banco:
         self.clientes.append(cliente)
         self.contas.append(cliente.conta)
 
-    def tentativa_saque(self, cliente:Cliente, valor:float):
-        autenticacao = cliente in self.clientes and cliente.conta.agencia in self.agencias and cliente.conta in self.contas
-        if autenticacao:
-            cliente.conta.sacar(valor)
-            return autenticacao
-        else:
-            print("Dados nao existem ou estao incorretos.")
+    def autenticar_saque(self, cliente:Cliente):
+        autenticacao = (cliente in self.clientes and cliente.conta.agencia in self.agencias and cliente.conta in self.contas)
+        return autenticacao
+
+    def sacar(self, cliente: Cliente, valor : float):
+        if self.autenticar_saque(cliente):
+            return cliente.conta.sacar(valor)
+        raise FalhaNaAutenticacaoError("Dados invalidos ou inexistentes.")
+
+
 
 #====================================================
 
@@ -154,8 +159,8 @@ eduarda = Cliente("Eduarda", 20, c2)
 banco_minha_casa.adicionar_cliente(joao)
 banco_minha_casa.adicionar_cliente(eduarda)
 
-banco_minha_casa.tentativa_saque(joao, 101)
-banco_minha_casa.tentativa_saque(eduarda, 240)
+banco_minha_casa.sacar(joao, 101)
+banco_minha_casa.sacar(eduarda, 240)
 
 print(joao)
 print(eduarda)
